@@ -30,7 +30,7 @@ render(){
             <input onChange={this.changeTitle}></input>
           <label>url</label>
             <input onChange={this.changeUrl}></input><br />
-            <button onClick={(ev)=>this.props.addResourceParent(this.state)}>add</button>
+            <button onClick={(ev)=>this.props.validateParent(this.state)}>add</button>
         </div>)
 }
 

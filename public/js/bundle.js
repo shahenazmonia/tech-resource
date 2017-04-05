@@ -21798,7 +21798,7 @@ var Center = function (_React$Component) {
     _this.state = {
       resources: [{ title: '', url: '' }]
     };
-    _this.addResource = _this.addResource.bind(_this);
+    _this.validData = _this.validData.bind(_this);
     _this.onRemove = _this.onRemove.bind(_this);
     return _this;
   }
@@ -21810,6 +21810,11 @@ var Center = function (_React$Component) {
       this.setState({
         resources: this.state.resources.concat(formState)
       });
+    }
+  }, {
+    key: 'validData',
+    value: function validData(titleUrl) {
+      titleUrl.title === '' || titleUrl.url === '' ? alert('Bad Data!') : this.addResource(titleUrl);
     }
   }, {
     key: 'onRemove',
@@ -21829,7 +21834,7 @@ var Center = function (_React$Component) {
         'div',
         null,
         _react2.default.createElement(_header2.default, null),
-        _react2.default.createElement(_resourceForm2.default, { addResourceParent: this.addResource, key: this.state.resources.length }),
+        _react2.default.createElement(_resourceForm2.default, { validateParent: this.validData, key: this.state.resources.length }),
         _react2.default.createElement(_myTable2.default, { data: this.state.resources, onRemoveParent: this.onRemove, key: this.state.resources.length + 100000 })
       );
     }
@@ -22030,7 +22035,7 @@ var ResourceForm = function (_React$Component) {
         _react2.default.createElement(
           'button',
           { onClick: function onClick(ev) {
-              return _this2.props.addResourceParent(_this2.state);
+              return _this2.props.validateParent(_this2.state);
             } },
           'add'
         )

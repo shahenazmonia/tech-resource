@@ -8,7 +8,7 @@ import MyTable from './myTable.js'
     this.state = {
       resources:[{title:'',url:''}]
     }
-    this.addResource = this.addResource.bind(this)
+    this.validData = this.validData.bind(this)
     this.onRemove = this.onRemove.bind(this)
 }
 
@@ -18,6 +18,10 @@ addResource(formState){
   this.setState({
       resources:this.state.resources.concat(formState)
   })
+}
+validData(titleUrl){
+  (titleUrl.title === '' || titleUrl.url ==='')
+  ?alert('Bad Data!'): this.addResource(titleUrl)
 }
 onRemove(resource){
   this.setState({
@@ -32,7 +36,7 @@ onRemove(resource){
 
     return(<div>
             <Header />
-            <ResourceForm addResourceParent={this.addResource} key={this.state.resources.length}/>
+            <ResourceForm validateParent={this.validData} key={this.state.resources.length}/>
             <MyTable data={this.state.resources} onRemoveParent={this.onRemove} key={this.state.resources.length+100000} /></div>)
 }
 }

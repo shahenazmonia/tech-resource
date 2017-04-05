@@ -9482,10 +9482,8 @@ var _center2 = _interopRequireDefault(_center);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 console.log(_center2.default);
-var render = function render() {
-  _reactDom2.default.render(_react2.default.createElement(_center2.default, null), document.getElementById('myApp'));
-};
-render();
+
+_reactDom2.default.render(_react2.default.createElement(_center2.default, null), document.getElementById('myApp'));
 
 /***/ }),
 /* 81 */
@@ -21801,6 +21799,7 @@ var Center = function (_React$Component) {
       resources: [{ title: '', url: '' }]
     };
     _this.addResource = _this.addResource.bind(_this);
+    _this.onRemove = _this.onRemove.bind(_this);
     return _this;
   }
 
@@ -21813,6 +21812,16 @@ var Center = function (_React$Component) {
       });
     }
   }, {
+    key: 'onRemove',
+    value: function onRemove(resource) {
+      this.setState({
+        resources: this.state.resources.filter(function (elem) {
+          console.log(elem);
+          return elem.title !== resource.title;
+        })
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
 
@@ -21821,7 +21830,7 @@ var Center = function (_React$Component) {
         null,
         _react2.default.createElement(_header2.default, null),
         _react2.default.createElement(_resourceForm2.default, { addResourceParent: this.addResource, key: this.state.resources.length }),
-        _react2.default.createElement(_myTable2.default, { data: this.state.resources, key: this.state.resources.length + 100000 })
+        _react2.default.createElement(_myTable2.default, { data: this.state.resources, onRemoveParent: this.onRemove, key: this.state.resources.length + 100000 })
       );
     }
   }]);
@@ -21898,7 +21907,10 @@ var myTable = function myTable(props) {
           'button',
           {
             type: 'button',
-            className: 'close'
+            className: 'close',
+            onClick: function onClick(event) {
+              return props.onRemoveParent(elem);
+            }
           },
           _react2.default.createElement(
             'span',

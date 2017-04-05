@@ -9,6 +9,7 @@ import MyTable from './myTable.js'
       resources:[{title:'',url:''}]
     }
     this.addResource = this.addResource.bind(this)
+    this.onRemove = this.onRemove.bind(this)
 }
 
 
@@ -18,13 +19,21 @@ addResource(formState){
       resources:this.state.resources.concat(formState)
   })
 }
+onRemove(resource){
+  this.setState({
+    resources:  this.state.resources.filter((elem)=>{
+      console.log(elem);
+        return (elem.title !== resource.title)
+      })
+  })
+}
 
   render(){
 
     return(<div>
             <Header />
             <ResourceForm addResourceParent={this.addResource} key={this.state.resources.length}/>
-            <MyTable data={this.state.resources} key={this.state.resources.length+100000} /></div>)
+            <MyTable data={this.state.resources} onRemoveParent={this.onRemove} key={this.state.resources.length+100000} /></div>)
 }
 }
 export default Center;

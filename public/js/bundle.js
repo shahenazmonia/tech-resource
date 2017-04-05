@@ -21796,7 +21796,15 @@ var Center = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Center.__proto__ || Object.getPrototypeOf(Center)).call(this, props));
 
     _this.state = {
-      resources: [{ title: '', url: '' }]
+      resources: [{ title: '', url: '' }],
+      buttonStyle: {
+        validStyle: {
+          backgroundColor: 'green'
+        },
+        invalidStyle: {
+          backgroundColor: 'red'
+        }
+      }
     };
     _this.validData = _this.validData.bind(_this);
     _this.onRemove = _this.onRemove.bind(_this);
@@ -21992,7 +22000,15 @@ var ResourceForm = function (_React$Component) {
     _this.changeUrl = _this.changeUrl.bind(_this);
     _this.state = {
       title: '',
-      url: ''
+      url: '',
+      buttonStyle: {
+        validStyle: {
+          backgroundColor: 'green'
+        },
+        invalidStyle: {
+          backgroundColor: 'red'
+        }
+      }
     };
     return _this;
   }
@@ -22016,6 +22032,8 @@ var ResourceForm = function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
+      var buttonStyle = this.state.title === '' || this.state.url === '' ? this.state.buttonStyle.invalidStyle : this.state.buttonStyle.validStyle;
+
       return _react2.default.createElement(
         'div',
         null,
@@ -22034,7 +22052,7 @@ var ResourceForm = function (_React$Component) {
         _react2.default.createElement('br', null),
         _react2.default.createElement(
           'button',
-          { onClick: function onClick(ev) {
+          { style: buttonStyle, onClick: function onClick(ev) {
               return _this2.props.validateParent(_this2.state);
             } },
           'add'

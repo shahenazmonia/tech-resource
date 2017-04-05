@@ -8,9 +8,18 @@ constructor(props){
   this.changeUrl = this.changeUrl.bind(this)
   this.state = {
     title:'',
-    url:''
+    url:'',
+    buttonStyle: {
+      validStyle: {
+        backgroundColor: 'green'
+      },
+      invalidStyle: {
+        backgroundColor: 'red'
+      }
+    }
   }
 }
+
 changeTitle(ev){
   this.setState({
     title:ev.target.value
@@ -25,12 +34,15 @@ changeUrl(ev){
 
 
 render(){
+  const buttonStyle = (this.state.title === '' || this.state.url ==='')
+  ? this.state.buttonStyle.invalidStyle :  this.state.buttonStyle.validStyle
+
   return(<div>
           <label>Name</label>
             <input onChange={this.changeTitle}></input>
           <label>url</label>
             <input onChange={this.changeUrl}></input><br />
-            <button onClick={(ev)=>this.props.validateParent(this.state)}>add</button>
+            <button style={buttonStyle} onClick={(ev)=>this.props.validateParent(this.state)}>add</button>
         </div>)
 }
 

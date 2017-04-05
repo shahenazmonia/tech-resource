@@ -3,10 +3,19 @@ import Header from './header.js'
 import ResourceForm from './resourceForm.js'
 import MyTable from './myTable.js'
  class Center extends React.Component {
+
   constructor(props) {
     super(props)
     this.state = {
-      resources:[{title:'',url:''}]
+      resources:[{title:'',url:''}],
+      buttonStyle: {
+        validStyle: {
+          backgroundColor: 'green'
+        },
+        invalidStyle: {
+          backgroundColor: 'red'
+        }
+      }
     }
     this.validData = this.validData.bind(this)
     this.onRemove = this.onRemove.bind(this)
@@ -21,7 +30,8 @@ addResource(formState){
 }
 validData(titleUrl){
   (titleUrl.title === '' || titleUrl.url ==='')
-  ?alert('Bad Data!'): this.addResource(titleUrl)
+  ?alert('Bad Data!') : this.addResource(titleUrl);
+
 }
 onRemove(resource){
   this.setState({

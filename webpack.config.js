@@ -1,22 +1,16 @@
 module.exports = {
   entry : {
-    bundle : ['./src/index.js']
+    bundle : ['./src/frontEnd/index.jsx']
   },
   output : {
     path : __dirname + '/public/js',
     filename : '[name].js',
     publicPath : 'public'
   },
-  devServer : {
-    inline : true,
-    contentBase : './public',
-    port : 8000
-
-  },
   module :{
     loaders : [
       {
-        test : /\.js$/,
+        test : /\.jsx$/,
         loader : 'babel-loader'
 
       }

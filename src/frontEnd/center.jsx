@@ -1,7 +1,7 @@
 import React from 'react'
-import Header from './header.js'
-import ResourceForm from './resourceForm.js'
-import MyTable from './myTable.js'
+import Header from './header.jsx'
+import ResourceForm from './resourceForm.jsx'
+import MyTable from './myTable.jsx'
  class Center extends React.Component {
 
   constructor(props) {
@@ -35,10 +35,9 @@ validData(titleUrl){
 }
 onRemove(resource){
   this.setState({
-    resources:  this.state.resources.filter((elem)=>{
-      console.log(elem);
-        return (elem.title !== resource.title)
-      })
+    resources:  this.state.resources.filter((elem)=>
+         elem.title !== resource.title
+      )
   })
 }
 
@@ -46,7 +45,7 @@ onRemove(resource){
 
     return(<div>
             <Header />
-            <ResourceForm validateParent={this.validData} key={this.state.resources.length}/>
+            <ResourceForm validateParent={this.validData} key={this.state.resources.length+1}/>
             <MyTable data={this.state.resources} onRemoveParent={this.onRemove} key={this.state.resources.length+100000} /></div>)
 }
 }

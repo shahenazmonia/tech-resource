@@ -3,9 +3,9 @@ import {createStore , combineReducers} from 'redux'
 const resourcesReducer = (state = [] , action)=>{
   switch (action.type) {
     case 'ADD_RESOURCES':
-        return this.state.concat(action.payload)
+        return state.concat(action.payload)
       case 'REMOVE_RESOURCE':
-        return  this.state.filter((elem)=>
+        return state.filter((elem)=>
              elem.title !== action.payload
           )
       break;

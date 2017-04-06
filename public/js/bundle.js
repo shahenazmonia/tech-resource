@@ -9893,9 +9893,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 const resourcesReducer = (state = [] , action)=>{
   switch (action.type) {
     case 'ADD_RESOURCES':
-        return this.state.concat(action.payload)
+        return state.concat(action.payload)
       case 'REMOVE_RESOURCE':
-        return  this.state.filter((elem)=>
+        return state.filter((elem)=>
              elem.title !== action.payload
           )
       break;
@@ -9939,14 +9939,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 console.log("asas");
 console.log(_reduxes2.default);
-var render = _reactDom2.default.render(_react2.default.createElement(_center2.default, { resources: _reduxes2.default.getState().resources,
-      onAdd: function onAdd(resource) {
-            return _reduxes2.default.dispatch({ type: 'ADD_RESOURCES', payload: resource });
-      },
-      onRemove: function onRemove(resource) {
-            return _reduxes2.default.dispatch({ type: 'REMOVE_REASOURCE', payload: resource });
-      }
-}), document.getElementById('myApp'));
+var render = function render() {
+      return _reactDom2.default.render(_react2.default.createElement(_center2.default, { resources: _reduxes2.default.getState().resources,
+            onAdd: function onAdd(resource) {
+                  return _reduxes2.default.dispatch({ type: 'ADD_RESOURCES', payload: resource });
+            },
+            onRemove: function onRemove(resource) {
+                  return _reduxes2.default.dispatch({ type: 'REMOVE_REASOURCE', payload: resource });
+            }
+      }), document.getElementById('myApp'));
+};
 
 render();
 _reduxes2.default.subscribe(render);
@@ -10149,14 +10151,18 @@ var myTable = function myTable(props) {
       'thead',
       null,
       _react2.default.createElement(
-        'th',
+        'tr',
         null,
-        'resource'
-      ),
-      _react2.default.createElement(
-        'th',
-        null,
-        'url'
+        _react2.default.createElement(
+          'th',
+          null,
+          'resource'
+        ),
+        _react2.default.createElement(
+          'th',
+          null,
+          'url'
+        )
       )
     ),
     _react2.default.createElement(

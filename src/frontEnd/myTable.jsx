@@ -26,8 +26,10 @@ const myTable = (props)=>{
   return(
     <table>
        <thead>
-         <th>resource</th>
-         <th>url</th>
+         <tr>
+           <th>resource</th>
+           <th>url</th>
+         </tr>
        </thead>
        <tbody>
          {data}

@@ -5,10 +5,11 @@ import store from './reduxes.js'
 
 console.log("asas");
 console.log(store);
-const render = ReactDom.render(<Center resources={store.getState().resources}
+const render = () => ReactDom.render(<Center resources={store.getState().resources}
       onAdd={resource => store.dispatch({ type: 'ADD_RESOURCES', payload: resource })}
       onRemove={resource => store.dispatch({ type: 'REMOVE_REASOURCE', payload: resource })}
-    /> ,document.getElementById('myApp'));
+    /> ,document.getElementById('myApp')
+);
 
 render()
 store.subscribe(render)

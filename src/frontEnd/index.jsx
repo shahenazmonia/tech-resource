@@ -1,5 +1,14 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 import Center from './center.jsx'
+import store from './reduxes.js'
 
-  ReactDom.render(<Center /> ,document.getElementById('myApp'));
+console.log("asas");
+console.log(store);
+const render = ReactDom.render(<Center resources={store.getState().resources}
+      onAdd={resource => store.dispatch({ type: 'ADD_RESOURCES', payload: resource })}
+      onRemove={resource => store.dispatch({ type: 'REMOVE_REASOURCE', payload: resource })}
+    /> ,document.getElementById('myApp'));
+
+render()
+store.subscribe(render)

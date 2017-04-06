@@ -2,6 +2,10 @@ import React from 'react'
 import Header from './header.jsx'
 import ResourceForm from './resourceForm.jsx'
 import MyTable from './myTable.jsx'
+import store from './reduxes.js'
+
+
+
  class Center extends React.Component {
 
   constructor(props) {
@@ -23,30 +27,33 @@ import MyTable from './myTable.jsx'
 
 
 addResource(formState){
-
+console.log(this.props.resources);
   this.setState({
-      resources:this.state.resources.concat(formState)
+
+      resources:this.props.resources.concat(formState)
   })
+
 }
 validData(titleUrl){
   (titleUrl.title === '' || titleUrl.url ==='')
   ?alert('Bad Data!') : this.addResource(titleUrl);
-
 }
+
 onRemove(resource){
   this.setState({
-    resources:  this.state.resources.filter((elem)=>
+    resources:  this.props.resources.filter((elem)=>
          elem.title !== resource.title
       )
   })
+
 }
 
   render(){
 
     return(<div>
             <Header />
-            <ResourceForm validateParent={this.validData} key={this.state.resources.length+1}/>
-            <MyTable data={this.state.resources} onRemoveParent={this.onRemove} key={this.state.resources.length+100000} /></div>)
+            <ResourceForm onAdd={this.props.onAdd} validateParent={this.validData}  />
+            <MyTable onRemoveParent={this.onRemove} data={this.props.resources}  /></div>)
 }
 }
 export default Center;

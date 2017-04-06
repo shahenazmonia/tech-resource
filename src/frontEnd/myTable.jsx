@@ -12,7 +12,7 @@ const myTable = (props)=>{
                   <button
                   type='button'
                   className='close'
-                  onClick={(event)=>props.onRemoveParent(elem)}
+                  onClick={(event)=>{console.log('sddsds');props.onRemoveParent(elem)}}
                    >
                    <span>&times;</span>
                   </button>

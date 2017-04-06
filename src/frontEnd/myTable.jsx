@@ -1,10 +1,9 @@
 import React from 'react'
 
 const myTable = (props)=>{
-  console.log(props);
   const data = props.data.map((elem)=>{
     return (
-              <tr>
+              <tr key={elem.title}>
                 <td>{elem.title}</td>
                 <td>{elem.url}</td>
                 <td>

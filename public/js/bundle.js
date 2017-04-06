@@ -10024,7 +10024,6 @@ var Center = function (_React$Component) {
   _createClass(Center, [{
     key: 'addResource',
     value: function addResource(formState) {
-      console.log(this.props.resources);
       this.setState({
 
         resources: this.props.resources.concat(formState)
@@ -10110,11 +10109,10 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var myTable = function myTable(props) {
-  console.log(props);
   var data = props.data.map(function (elem) {
     return _react2.default.createElement(
       'tr',
-      null,
+      { key: elem.title },
       _react2.default.createElement(
         'td',
         null,

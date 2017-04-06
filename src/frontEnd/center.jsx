@@ -27,7 +27,6 @@ import store from './reduxes.js'
 
 
 addResource(formState){
-console.log(this.props.resources);
   this.setState({
 
       resources:this.props.resources.concat(formState)
@@ -57,7 +56,7 @@ onRemove(resource){
     return(<div>
             <Header />
             <ResourceForm onAdd={this.props.onAdd} validateParent={this.validData}  />
-            <MyTable onRemoveParent={this.props.onRemove} data={this.props.resources}  /></div>)
+            <MyTable onRemoveParent={this.props.onRemove} data={this.props.resources} /></div>)
 }
 }
 export default Center;

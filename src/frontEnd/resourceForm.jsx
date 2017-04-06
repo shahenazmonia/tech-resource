@@ -31,6 +31,11 @@ changeUrl(ev){
   })
 }
 
+cleanState(){
+  console.log("clean");
+
+}
+
 
 
 render(){
@@ -42,7 +47,7 @@ render(){
             <input onChange={this.changeTitle}></input>
           <label>url</label>
             <input onChange={this.changeUrl}></input><br />
-            <button style={buttonStyle} onClick={(ev)=>this.props.onAdd(this.state)}>add</button>
+            <button style={buttonStyle} onClick={(ev)=>{this.props.onAdd(this.state)}}>add</button>
         </div>)
 }
 

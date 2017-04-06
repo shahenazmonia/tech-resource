@@ -11,7 +11,7 @@ import store from './reduxes.js'
   constructor(props) {
     super(props)
     this.state = {
-      resources:[{title:'',url:''}],
+      resources:[],
       buttonStyle: {
         validStyle: {
           backgroundColor: 'green'
@@ -40,9 +40,13 @@ validData(titleUrl){
 }
 
 onRemove(resource){
+  console.log("onRemove",this.props.resources);
   this.setState({
-    resources:  this.props.resources.filter((elem)=>
-         elem.title !== resource.title
+    resources:  this.props.resources.filter((elem)=>{
+      console.log(elem.title , resource.title,elem.title !== resource.title);
+           return(elem.title !== resource.title)
+    }
+
       )
   })
 
@@ -53,7 +57,7 @@ onRemove(resource){
     return(<div>
             <Header />
             <ResourceForm onAdd={this.props.onAdd} validateParent={this.validData}  />
-            <MyTable onRemoveParent={this.onRemove} data={this.props.resources}  /></div>)
+            <MyTable onRemoveParent={this.props.onRemove} data={this.props.resources}  /></div>)
 }
 }
 export default Center;

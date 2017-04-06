@@ -9895,8 +9895,11 @@ const resourcesReducer = (state = [] , action)=>{
     case 'ADD_RESOURCES':
         return state.concat(action.payload)
       case 'REMOVE_RESOURCE':
-        return state.filter((elem)=>
-             elem.title !== action.payload
+        return state.filter((elem)=>{
+          console.log('action',action.payload);
+          return(elem.title !== action.payload.title)
+        }
+
           )
       break;
     default:
@@ -9945,7 +9948,7 @@ var render = function render() {
                   return _reduxes2.default.dispatch({ type: 'ADD_RESOURCES', payload: resource });
             },
             onRemove: function onRemove(resource) {
-                  return _reduxes2.default.dispatch({ type: 'REMOVE_REASOURCE', payload: resource });
+                  return _reduxes2.default.dispatch({ type: 'REMOVE_RESOURCE', payload: resource });
             }
       }), document.getElementById('myApp'));
 };
@@ -10003,7 +10006,7 @@ var Center = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Center.__proto__ || Object.getPrototypeOf(Center)).call(this, props));
 
     _this.state = {
-      resources: [{ title: '', url: '' }],
+      resources: [],
       buttonStyle: {
         validStyle: {
           backgroundColor: 'green'
@@ -10035,8 +10038,10 @@ var Center = function (_React$Component) {
   }, {
     key: 'onRemove',
     value: function onRemove(resource) {
+      console.log("onRemove", this.props.resources);
       this.setState({
         resources: this.props.resources.filter(function (elem) {
+          console.log(elem.title, resource.title, elem.title !== resource.title);
           return elem.title !== resource.title;
         })
       });
@@ -10050,7 +10055,7 @@ var Center = function (_React$Component) {
         null,
         _react2.default.createElement(_header2.default, null),
         _react2.default.createElement(_resourceForm2.default, { onAdd: this.props.onAdd, validateParent: this.validData }),
-        _react2.default.createElement(_myTable2.default, { onRemoveParent: this.onRemove, data: this.props.resources })
+        _react2.default.createElement(_myTable2.default, { onRemoveParent: this.props.onRemove, data: this.props.resources })
       );
     }
   }]);
@@ -10107,7 +10112,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var myTable = function myTable(props) {
   console.log(props);
   var data = props.data.map(function (elem) {
-    console.log("resource", elem);
     return _react2.default.createElement(
       'tr',
       null,
@@ -10130,7 +10134,7 @@ var myTable = function myTable(props) {
             type: 'button',
             className: 'close',
             onClick: function onClick(event) {
-              console.log('sddsds');props.onRemoveParent(elem);
+              props.onRemoveParent(elem);
             }
           },
           _react2.default.createElement(
@@ -10143,7 +10147,6 @@ var myTable = function myTable(props) {
     );
   });
 
-  console.log('d', data);
   return _react2.default.createElement(
     'table',
     null,
@@ -10240,6 +10243,11 @@ var ResourceForm = function (_React$Component) {
       });
     }
   }, {
+    key: 'cleanState',
+    value: function cleanState() {
+      console.log("clean");
+    }
+  }, {
     key: 'render',
     value: function render() {
       var _this2 = this;
@@ -10265,7 +10273,7 @@ var ResourceForm = function (_React$Component) {
         _react2.default.createElement(
           'button',
           { style: buttonStyle, onClick: function onClick(ev) {
-              return _this2.props.onAdd(_this2.state);
+              _this2.props.onAdd(_this2.state);
             } },
           'add'
         )

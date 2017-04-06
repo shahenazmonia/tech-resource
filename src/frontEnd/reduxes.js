@@ -5,8 +5,11 @@ const resourcesReducer = (state = [] , action)=>{
     case 'ADD_RESOURCES':
         return state.concat(action.payload)
       case 'REMOVE_RESOURCE':
-        return state.filter((elem)=>
-             elem.title !== action.payload
+        return state.filter((elem)=>{
+          console.log('action',action.payload);
+          return(elem.title !== action.payload.title)
+        }
+
           )
       break;
     default:

@@ -7,7 +7,7 @@ console.log("asas");
 console.log(store);
 const render = () => ReactDom.render(<Center resources={store.getState().resources}
       onAdd={resource => store.dispatch({ type: 'ADD_RESOURCES', payload: resource })}
-      onRemove={resource => store.dispatch({ type: 'REMOVE_REASOURCE', payload: resource })}
+      onRemove={resource => store.dispatch({ type: 'REMOVE_RESOURCE', payload: resource })}
     /> ,document.getElementById('myApp')
 );
 

@@ -3,7 +3,6 @@ import React from 'react'
 const myTable = (props)=>{
   console.log(props);
   const data = props.data.map((elem)=>{
-    console.log("resource",elem);
     return (
               <tr>
                 <td>{elem.title}</td>
@@ -12,7 +11,7 @@ const myTable = (props)=>{
                   <button
                   type='button'
                   className='close'
-                  onClick={(event)=>{console.log('sddsds');props.onRemoveParent(elem)}}
+                  onClick={(event)=>{props.onRemoveParent(elem)}}
                    >
                    <span>&times;</span>
                   </button>
@@ -22,7 +21,6 @@ const myTable = (props)=>{
             )
           })
 
-          console.log('d',data);
   return(
     <table>
        <thead>

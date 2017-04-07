@@ -4,7 +4,7 @@ const Hapi = require('hapi')
 const inert = require('inert')
 const vision = require('vision')
 const handlebars = require('handlebars');
-const routes = require('./src/backEnd/routes.js')
+const routes = require('./routes.js')
 var env = require('env')
 const server = new Hapi.Server()
 server.connection({

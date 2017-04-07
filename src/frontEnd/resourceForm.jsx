@@ -1,5 +1,4 @@
 import React from 'react'
-import store from './reduxes.js'
 
 class ResourceForm extends React.Component {
     constructor(props) {
@@ -41,7 +40,7 @@ class ResourceForm extends React.Component {
                 <button style={buttonStyle} onClick={(ev) => {
                     (this.state.title === '' || this.url === '')
                         ? alert('Bad Data!')
-                        : store.dispatch({type: 'ADD_RESOURCES', payload: this.state})
+                        : this.props.addResource(this.state)
                         this.setState({title:'',url:''})
                 }}>add</button>
             </div>

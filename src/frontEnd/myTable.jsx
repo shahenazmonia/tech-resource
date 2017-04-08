@@ -1,14 +1,16 @@
 import React from 'react'
-import store from './reduxes.js'
 
 const myTable = (props) => {
-    const data = store.getState().resources.map((elem) => {
+    const data = props.resourceData.map((elem) => {
         return (
             <tr key={elem.title}>
                 <td>{elem.title}</td>
                 <td>{elem.url}</td>
                 <td>
-                    <button type='button' className='close' onClick={(ev) => store.dispatch({type: 'REMOVE_RESOURCE', payload: elem})}>
+                    <button type='button' className='close' onClick={
+                        (ev)=>{props.removeResource(elem)}
+                      }
+                      >
                         <span>&times;</span>
                     </button>
                 </td>

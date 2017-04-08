@@ -1,5 +1,4 @@
 import React from 'react'
-import store from './reduxes.js'
 
 const myTable = (props) => {
     const data = props.resourceData.map((elem) => {

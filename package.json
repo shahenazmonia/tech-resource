@@ -1,7 +1,7 @@
 {
   "name": "y",
   "version": "1.0.0",
-  "description": "Alaa&Ghada",
+  "description": "",
   "main": "center.js",
   "scripts": {
     "lint": "eslint .",

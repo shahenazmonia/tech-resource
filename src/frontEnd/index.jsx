@@ -1,9 +1,10 @@
-import React from 'react';// eslint-disable-line
+import React from 'react'; // eslint-disable-line
 import ReactDom from 'react-dom';
-import Header from './header.jsx';// eslint-disable-line
-import ResourceForm from './resourceForm.jsx';// eslint-disable-line
-import MyTable from './myTable.jsx';// eslint-disable-line
-import store from './reduxes.js';
+import Header from './header.jsx'; // eslint-disable-line
+import ResourceForm from './resourceForm.jsx'; // eslint-disable-line
+import MyTable from './myTable.jsx'; // eslint-disable-line
+import resourcesReducer from './reduxes.js';
+import store from './store.js'
 import styles from './css/styles.css';
 
 const render = () => ReactDom.render(

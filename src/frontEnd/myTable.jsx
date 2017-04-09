@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';// eslint-disable-line
 
 const myTable = (props) => {
     const data = props.resourceData.map((elem) => {
@@ -8,28 +8,29 @@ const myTable = (props) => {
                 <td>{elem.url}</td>
                 <td>
                     <button type='button' className='close' onClick={
-                        (ev)=>{props.removeResource(elem)}
+                        (ev)=>{props.removeResource(elem);}// eslint-disable-line
                       }
                       >
                         <span>&times;</span>
                     </button>
                 </td>
             </tr>
-        )
-    })
+        );
+    });
     return (
         <table>
             <thead>
                 <tr>
                     <th>resource</th>
                     <th>url</th>
+                    <th>X</th>
                 </tr>
             </thead>
             <tbody>
                 {data}
             </tbody>
         </table>
-    )
-}
+    );
+};
 
 export default myTable;

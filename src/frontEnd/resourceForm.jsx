@@ -1,10 +1,11 @@
-import React from 'react'
+import React from 'react';
+
 
 class ResourceForm extends React.Component {
     constructor(props) {
         super(props);
-        this.changeTitle = this.changeTitle.bind(this)
-        this.changeUrl = this.changeUrl.bind(this)
+        this.changeTitle = this.changeTitle.bind(this);
+        this.changeUrl = this.changeUrl.bind(this);
         this.state = {
             title: '',
             url: '',
@@ -16,36 +17,35 @@ class ResourceForm extends React.Component {
                     backgroundColor: 'red'
                 }
             }
-        }
+        };
     }
 
     changeTitle(ev) {
-        this.setState({title: ev.target.value})
+        this.setState({title: ev.target.value});
     }
     changeUrl(ev) {
-        this.setState({url: ev.target.value})
+        this.setState({url: ev.target.value});
     }
 
     render() {
         const buttonStyle = (this.state.title === '' || this.state.url === '')
             ? this.state.buttonStyle.invalidStyle
-            : this.state.buttonStyle.validStyle
+            : this.state.buttonStyle.validStyle;
 
         return (
-            <div>
+            <div >
                 <label>Name</label>
-                <input value = {this.state.title} onChange={this.changeTitle}></input>
+                <input value={this.state.title} onChange={this.changeTitle}></input><br/>
                 <label>url</label>
-                <input value = {this.state.url} onChange={this.changeUrl}></input><br/>
-                <button style={buttonStyle} onClick={(ev) => {
-                    (this.state.title === '' || this.url === '')
+                <input value={this.state.url} onChange={this.changeUrl}></input><br/>
+                <button style={buttonStyle} onClick={() => {
+                    (this.state.title === '' || this.state.url === '')
                         ? alert('Bad Data!')
-                        : this.props.addResource(this.state)
-                        this.setState({title:'',url:''})
+                        : this.props.addResource(this.state);this.setState({title: '', url: ''});
                 }}>add</button>
             </div>
-        )
+        );
     }
 }
 
-export default ResourceForm
+export default ResourceForm;

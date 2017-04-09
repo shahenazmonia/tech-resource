@@ -1,0 +1,21 @@
+  input{
+  border-color:blue;
+  margin: 10px;
+  width: 180px;
+}
+th {
+    background-color: #4CAF50;
+    color: white;
+    border-bottom: 1px solid #ddd;
+    width: 80px;
+
+}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+  border-bottom: 1px solid #ddd;
+
+}
+ td {
+  padding: 10px;
+  text-align: left;
+}

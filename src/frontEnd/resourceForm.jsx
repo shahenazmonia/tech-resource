@@ -1,4 +1,5 @@
 import React from 'react';
+import url from './url.js';
 
 
 class ResourceForm extends React.Component {
@@ -39,9 +40,20 @@ class ResourceForm extends React.Component {
                 <label>url</label>
                 <input value={this.state.url} onChange={this.changeUrl}></input><br/>
                 <button style={buttonStyle} onClick={() => {
-                    (this.state.title === '' || this.state.url === '')
-                        ? alert('Bad Data!')
-                        : this.props.addResource(this.state);this.setState({title: '', url: ''});
+                    fetch(url)
+                    .then(res=> res.json())
+                    .then((results) => {
+                       console.log('sdsddsd',results.query.results.rate);// eslint-disable-line
+                        // console.log(results.data.results);// eslint-disable-line
+                        this.props.addPeople(results.query.results.rate);
+                    }).catch(() =>{
+                        this.props.failed();
+                    }) ;
+                    this.props.loading();
+                    // eslint-disable-line
+                    // (this.state.title === '' || this.state.url === '')
+                    //     ? alert('Bad Data!')
+                    //     : this.props.addResource(this.state);this.setState({title: '', url: ''});
                 }}>add</button>
             </div>
         );

@@ -1,2 +1,4 @@
 bundle.js
-eslint 
+eslint
+reducers.test.js
+url.js

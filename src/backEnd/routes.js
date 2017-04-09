@@ -7,6 +7,13 @@ module.exports = [{
 },
 {
     method: 'GET',
+    path: '/data',
+    handler: (request, reply) => {
+        reply([{asd:'asd',abc:'abc'},{bb:'bb',bbb:'bbb'}]);
+    }
+},
+{
+    method: 'GET',
     path: '/public/{file*}',
     handler: {
         directory: {

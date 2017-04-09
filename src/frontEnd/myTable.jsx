@@ -3,9 +3,10 @@ import React from 'react';// eslint-disable-line
 const myTable = (props) => {
     const data = props.resourceData.map((elem) => {
         return (
-            <tr key={elem.title}>
-                <td>{elem.title}</td>
-                <td>{elem.url}</td>
+            <tr key={elem.id}>
+                <td>{elem.Name}</td>
+                <td>{elem.Ask}</td>
+                <td>{elem.Bid}</td>
                 <td>
                     <button type='button' className='close' onClick={
                         (ev)=>{props.removeResource(elem);}// eslint-disable-line
@@ -18,7 +19,9 @@ const myTable = (props) => {
         );
     });
     return (
-        <table>
+        <table
+          id="#table"
+          >
             <thead>
                 <tr>
                     <th>resource</th>

@@ -1,3 +1,5 @@
+const db = require('../database/migrate.js');
+// console.log(db);
 module.exports = [{
     method: 'GET',
     path: '/',
@@ -6,10 +8,11 @@ module.exports = [{
     }
 },
 {
-    method: 'GET',
-    path: '/data',
-    handler: (request, reply) => {
-        reply([{asd:'asd',abc:'abc'},{bb:'bb',bbb:'bbb'}]);
+    method: 'POST',
+    path: '/insert',
+    handler: (request, reply) => { // eslint-disable-line
+        db.add(request.payload);
+
     }
 },
 {

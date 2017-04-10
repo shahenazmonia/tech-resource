@@ -1,6 +1,6 @@
 import React from 'react';
-import url from './url.js';
-
+import {echoData} from './actions.jsx';
+import {add} from './database/migrate.js' // eslint-disable-line
 
 class ResourceForm extends React.Component {
     constructor(props) {
@@ -40,16 +40,11 @@ class ResourceForm extends React.Component {
                 <label>url</label>
                 <input value={this.state.url} onChange={this.changeUrl}></input><br/>
                 <button style={buttonStyle} onClick={() => {
-                    fetch(url)
-                    .then(res=> res.json())
-                    .then((results) => {
-                       console.log('sdsddsd',results.query.results.rate);// eslint-disable-line
-                        // console.log(results.data.results);// eslint-disable-line
-                        this.props.addPeople(results.query.results.rate);
-                    }).catch(() =>{
-                        this.props.failed();
-                    }) ;
-                    this.props.loading();
+
+                    echoData({
+                        title :this.state.title,
+                        url:this.state.url
+                    });
                     // eslint-disable-line
                     // (this.state.title === '' || this.state.url === '')
                     //     ? alert('Bad Data!')

@@ -38,6 +38,7 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "redux-devtools": "^3.3.2",
+    "sqlite3": "^3.1.8",
     "vision": "^4.1.1",
     "webpack": "^2.3.3",
     "webpack-dev-server": "^2.4.2"

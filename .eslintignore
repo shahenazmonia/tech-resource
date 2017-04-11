@@ -1,4 +1,3 @@
 bundle.js
 eslint
-reducers.test.js
-url.js
+database.db

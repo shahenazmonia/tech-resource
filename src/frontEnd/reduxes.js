@@ -13,7 +13,7 @@ const resourcesReducer = (state = [], action) => {
 
 
     case 'FETCH_POSTS_SUCCESS':
-        console.log('success fettch'); // eslint-disable-line   
+        console.log('success fettch'); // eslint-disable-line
         return action.payload;
 
     default:

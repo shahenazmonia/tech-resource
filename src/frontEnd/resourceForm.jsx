@@ -1,6 +1,6 @@
 import React from 'react';
-import {echoData} from './actions.jsx';
-import {add} from './database/migrate.js' // eslint-disable-line
+import {insertResource } from './actions.js';
+
 
 class ResourceForm extends React.Component {
     constructor(props) {
@@ -40,15 +40,12 @@ class ResourceForm extends React.Component {
                 <label>url</label>
                 <input value={this.state.url} onChange={this.changeUrl}></input><br/>
                 <button style={buttonStyle} onClick={() => {
-
-                    echoData({
-                        title :this.state.title,
-                        url:this.state.url
-                    });
-                    // eslint-disable-line
-                    // (this.state.title === '' || this.state.url === '')
-                    //     ? alert('Bad Data!')
-                    //     : this.props.addResource(this.state);this.setState({title: '', url: ''});
+                    //eslint-disable-line
+                    (this.state.title === '' || this.state.url === '')
+                        ? alert('Please fill inputs!')
+                        : insertResource({
+                            title :this.state.title,
+                            url:this.state.url});this.setState({title: '', url: ''});
                 }}>add</button>
             </div>
         );

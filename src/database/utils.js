@@ -14,7 +14,7 @@ function select(cb) {
     db.all('SELECT * FROM resources', cb);
 }
 function deleteRes(id, cb) {
-    db.run(`DELETE FROM resources WHERE id='${id}'`,cb);
+    db.run(`DELETE FROM resources WHERE id=?`,[`${id}`],cb); //eslint-disable-line
 
 }
 

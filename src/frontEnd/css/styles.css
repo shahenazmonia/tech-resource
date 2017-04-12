@@ -19,3 +19,9 @@ tr:nth-child(even) {
   padding: 10px;
   text-align: left;
 }
+
+.updateInput{
+  border: none;
+  background-color: white;
+  width: 100%;
+}

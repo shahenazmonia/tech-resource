@@ -17,10 +17,15 @@ function deleteRes(id, cb) {
     db.run(`DELETE FROM resources WHERE id=?`,[`${id}`],cb); //eslint-disable-line
 
 }
+function updateRes(id ,data, cb) {
+    db.run(`UPDATE resources SET tech= ? ,url=? WHERE id=?`,[`${data.tech}`,`${data.url}`,`${id}`],cb); //eslint-disable-line
+
+}
 
 module.exports = {
     createTable,
     add,
     select,
-    deleteRes
+    deleteRes,
+    updateRes
 };

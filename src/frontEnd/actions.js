@@ -41,4 +41,15 @@ const deleteResource = (id)=> {
 
 };
 
-export {insertResource,getAllData,deleteResource};
+const updateResource = (id,data)=> {
+    const url = '/update/'+`${id}`;
+    fetch(url,{method:'POST',body:JSON.stringify(data)})
+    .then(res => res.json())
+    .then((result) => {
+        store.dispatch({type: 'FETCH_POSTS_SUCCESS', payload: result});
+    }).catch(() => {
+    });
+
+};
+
+export {insertResource,getAllData,deleteResource,updateResource};

@@ -1,5 +1,4 @@
-import {createStore,combineReducers} from 'redux';
-
+import {createStore,combineReducers} from 'redux'; // eslint-disable-line
 const resourcesReducer = (state = [], action) => {
     switch (action.type) {
     case 'FETCH_POSTS_REQUEST':
@@ -28,4 +27,8 @@ const allReducers = combineReducers({
 });
 const store = createStore(allReducers);
 
-export default store;
+
+
+
+
+export default resourcesReducer;

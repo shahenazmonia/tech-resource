@@ -32,6 +32,22 @@ module.exports = [{
     }
 },
 {
+    method: 'POST',
+    path: '/update/{id}',
+    handler: (request, reply) => {
+      console.log(request.payload)// eslint-disable-line
+        var id = encodeURIComponent(request.params.id);
+        db.updateRes(id,JSON.parse(request.payload), (err)=>{
+            if (err) {
+                reply([{error : 'error'}]);
+            }
+            db.select((err,res)=>{
+                reply(res);
+            });
+        });
+    }
+},
+{
     method: 'DELETE',
     path: '/delete/{id}',
     handler: (request, reply) => { // eslint-disable-line

@@ -1,4 +1,5 @@
 import React from 'react';
+import {insertResource } from './actions.js';
 
 
 class ResourceForm extends React.Component {
@@ -39,9 +40,12 @@ class ResourceForm extends React.Component {
                 <label>url</label>
                 <input value={this.state.url} onChange={this.changeUrl}></input><br/>
                 <button style={buttonStyle} onClick={() => {
+                    //eslint-disable-line
                     (this.state.title === '' || this.state.url === '')
-                        ? alert('Bad Data!')
-                        : this.props.addResource(this.state);this.setState({title: '', url: ''});
+                        ? alert('Please fill inputs!')
+                        : insertResource({
+                            title :this.state.title,
+                            url:this.state.url});this.setState({title: '', url: ''});
                 }}>add</button>
             </div>
         );

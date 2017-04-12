@@ -1,14 +1,16 @@
-import React from 'react';// eslint-disable-line
+import React from 'react'; //eslint-disable-line
+import {deleteResource} from './actions.js';// eslint-disable-line
 
 const myTable = (props) => {
     const data = props.resourceData.map((elem) => {
         return (
-            <tr key={elem.title}>
-                <td>{elem.title}</td>
+            <tr key={elem.id}>
+                <td>{elem.id}</td>
+                <td>{elem.tech}</td>
                 <td>{elem.url}</td>
                 <td>
                     <button type='button' className='close' onClick={
-                        (ev)=>{props.removeResource(elem);}// eslint-disable-line
+                        (ev)=>{deleteResource(elem.id)}// eslint-disable-line
                       }
                       >
                         <span>&times;</span>
@@ -18,7 +20,9 @@ const myTable = (props) => {
         );
     });
     return (
-        <table>
+        <table
+          id="#table"
+          >
             <thead>
                 <tr>
                     <th>resource</th>

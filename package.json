@@ -5,9 +5,13 @@
   "main": "center.js",
   "scripts": {
     "lint": "eslint .",
-    "test": " jest ",
+
+    "test": "jest",
+    "test:watch": "jest --watch",
+
     "start": "node ./src/backEnd/index.js",
-    "watch": "webpack --watch"
+    "watch": "webpack --watch",
+    "server:watch": "nodemon -x 'npm start'"
   },
   "pre-commit": [
     "lint"
@@ -32,10 +36,13 @@
     "pre-commit": "^1.2.2",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
+    "redux-devtools": "^3.3.2",
+    "sqlite3": "^3.1.8",
     "vision": "^4.1.1",
     "webpack": "^2.3.3"
   },
   "dependencies": {
+    "axios": "^0.16.1",
     "css-loader": "^0.28.0",
     "react-redux": "^5.0.3",
     "redux": "^3.6.0",

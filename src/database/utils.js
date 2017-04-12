@@ -18,6 +18,7 @@ function deleteRes(id, cb) {
 
 }
 function updateRes(id ,data, cb) {
+
     db.run(`UPDATE resources SET tech= ? ,url=? WHERE id=?`,[`${data.tech}`,`${data.url}`,`${id}`],cb); //eslint-disable-line
 
 }

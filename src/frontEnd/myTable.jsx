@@ -8,6 +8,8 @@ class myTable extends React.Component {
 
 
         this.state = {
+            tech:'',
+            url:'',
             buttonStatus:'update',
             inputDisabled:false,
             inputStyle:{
@@ -25,69 +27,73 @@ class myTable extends React.Component {
 
     }
 
+    handleUpdate(techValue,urlValue,cb){
+        this.setState({
+            tech: techValue.textContent ,
+            url: urlValue.textContent ,
+            buttonStatus:'update',
+            inputDisabled:false
+        });
+        cb(techValue.textContent,urlValue.textContent);
+    }
+
 
     render() {
-        let titleInput,
-            urlInput,id;
-        const inputStyle = (this.state.inputDisabled)
-                ? this.state.inputStyle.invalidStyle
-                : this.state.inputStyle.validStyle;
-      //  console.log('refs',titleInput,urlInput);
+
+        // const inputStyle = (this.state.inputDisabled)
+        //         ? this.state.inputStyle.invalidStyle
+        //         : this.state.inputStyle.validStyle;
+        //
+
         const data = this.props.resourceData.map((elem) => {
+            let techValue  ;
+            let urlValue  ;
+
             return (
 
-                <tr key={elem.id} ref={() => {elem.id;}}> // eslint-disable-line
-                    <td contentEditable="false" id={elem.id} style={inputStyle} >{elem.id}</td>
-                    <td contentEditable={this.state.inputDisabled} id={elem.id} ref={(node) => {
-                        titleInput = node;
-                    }} style={inputStyle}>{elem.tech}</td>
-                    <td contentEditable={this.state.inputDisabled} id={elem.id} ref={(node) => {
-                        urlInput = node;
-                    }} style={inputStyle}>{elem.url}</td>
+                <tr key={elem.id} >
+                    <td contentEditable="false" >{elem.id}</td>
+                    <td contentEditable={this.state.inputDisabled} ref={(input) => { techValue = input; }}>{elem.tech}</td>
+                    <td contentEditable={this.state.inputDisabled} ref={(input) => { urlValue = input; }}>{elem.url}</td>
                     <td>
-                        <button type='button' className='close' onClick={() => { // eslint-disable-line}>
-                            deleteResource(elem.id);
-                        }}>
-                            <span>DELETE</span>
-                             </button>
+                          <button type='button' className='close' onClick={() => {
+                              deleteResource(elem.id);
+                          }}>
+                              <span>DELETE</span>
+                               </button>
                     </td>
-
                     <td>
-
-                        <button type='button' className='s' onClick={() => {
+                        <button type='button' onClick={() => {
                             if(this.state.inputDisabled){
-                                updateResource(id  , {
-                                    tech: titleInput.textContent,
-                                    url: urlInput.textContent
+                                this.handleUpdate(techValue,urlValue,(tech,url)=>{
+                                    updateResource(elem.id  ,{tech:tech,url:url} );
                                 });
-                                this.setState({
-                                    buttonStatus:'update',
-                                    inputDisabled:false
-                                });
+
+
                             }else{
                                 this.setState({
+
                                     buttonStatus:'save',
                                     inputDisabled:true
                                 });
                             }
-
-
                         }}>
                             <span>{this.state.buttonStatus}</span>
                         </button>
-
                     </td>
                 </tr>
+
             );
         });
-
         return (
             <table id="#table">
                 <thead>
                     <tr>
+                        <th>id</th>
                         <th>resource</th>
                         <th>url</th>
                         <th>X</th>
+                        <th>update</th>
                     </tr>
                 </thead>
                 <tbody>

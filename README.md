@@ -11,7 +11,6 @@ We used **React**,**reduix** and **asynch reduix front-end** with **hapi server*
 
 **To run this code**
 ```
-$ git clone https://github.com/shahenazmonia/tech-resource.git
 $ npm i
 $ webpack
 $ node ./src/backEnd/index.js

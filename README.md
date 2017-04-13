@@ -1,4 +1,4 @@
-# Tech Resources 
+# Tech Resources
 
 ## The project is a small website for add,remove and update resources (resource title, resource url)
 
@@ -13,7 +13,12 @@ var sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database('database.db');
 
 ```
+To run this code
 
-<!-- ** when the user add a resource name and URl and press on add button will validate if the inputs empty or full if empty the button color will still red if the inputs full the button color will be green and the user can add the resources to the table ** -->
-
-
+```js
+- git clone https://github.com/shahenazmonia/tech-resource.git
+- npm i
+- npm i nodemon -g
+- npm run watch
+- npm run server:watch
+```

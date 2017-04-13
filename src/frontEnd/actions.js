@@ -13,7 +13,13 @@ const thunks = { // eslint-disable-line
     }
 };
 const insertResource = (data) => {
-    fetch('/insert',{method:'POST',body: JSON.stringify(data)})
+    fetch('/insert',
+        {method:'POST',
+            body: JSON.stringify(data),
+            headers:{
+                'content-type':'application/json'
+            }}
+  )
     .then(res => res.json())
     .then((result) => {
         store.dispatch({type: 'FETCH_POSTS_SUCCESS', payload: result});
@@ -43,7 +49,11 @@ const deleteResource = (id)=> {
 
 const updateResource = (id,data)=> {
     const url = '/update/'+`${id}`;
-    fetch(url,{method:'POST',body:JSON.stringify(data)})
+    fetch(url,{method:'POST',
+        body:JSON.stringify(data),
+        headers:{
+            'content-type':'application/json'
+        }})
     .then(res => res.json())
     .then((result) => {
         store.dispatch({type: 'FETCH_POSTS_SUCCESS', payload: result});

@@ -18,13 +18,11 @@ module.exports = [{
 {
     method: 'POST',
     path: '/insert',
-    handler: (request, reply) => { // eslint-disable-line
-
+    handler: (request, reply) => {
         db.add(request.payload,(err)=>{
             if(err){
-                reply([{err:'err'}]);
+                return reply([{err:'err'}]);
             }
-
             db.select((err,res)=>{
                 reply(res);
             });
@@ -35,9 +33,7 @@ module.exports = [{
     method: 'POST',
     path: '/update/{id}',
     handler: (request, reply) => {
-      console.log(request.payload)// eslint-disable-line
-        var id = encodeURIComponent(request.params.id);
-        db.updateRes(id,JSON.parse(request.payload), (err)=>{
+        db.updateRes(request.params.id,request.payload, (err)=>{
             if (err) {
                 reply([{error : 'error'}]);
             }
@@ -50,9 +46,8 @@ module.exports = [{
 {
     method: 'DELETE',
     path: '/delete/{id}',
-    handler: (request, reply) => { // eslint-disable-line
-        var id = encodeURIComponent(request.params.id);
-        db.deleteRes(id,(err)=>{
+    handler: (request, reply) => { 
+        db.deleteRes(request.params.id,(err)=>{
             if(err){
                 reply([{error : 'error'}]);
             }

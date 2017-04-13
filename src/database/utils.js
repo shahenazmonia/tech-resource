@@ -7,20 +7,18 @@ function createTable(cb) {
 
 function add(data,cb) {
 
-    db.run('INSERT INTO resources(tech,url) VALUES (?,?)',[data.title,data.url],cb); // eslint-disable-line
+    db.run('INSERT INTO resources(tech,url) VALUES (?,?)',[data.title,data.url],cb);
 }
 
 function select(cb) {
     db.all('SELECT * FROM resources', cb);
 }
 function deleteRes(id, cb) {
-    db.run(`DELETE FROM resources WHERE id=?`,[id],cb); //eslint-disable-line
-
+    db.run('DELETE FROM resources WHERE id=?',[id],cb);
 }
 function updateRes(id ,data, cb) {
 
-    db.run(`UPDATE resources SET tech= ? ,url=? WHERE id=?`,[data.tech,data.url,id],cb); //eslint-disable-line
-
+    db.run('UPDATE resources SET tech= ? ,url=? WHERE id=?',[data.tech,data.url,id],cb);
 }
 
 module.exports = {

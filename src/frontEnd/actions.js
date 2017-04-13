@@ -11,7 +11,8 @@ const insertResource = (data) => {
     .then(res => res.json())
     .then((result) => {
         store.dispatch({type: 'FETCH_POSTS_SUCCESS', payload: result});
-    }).catch(() => {
+    }).catch((err) => {
+        store.dispatch({type: 'FETCH_POSTS_FAILED', payload: err});
     });
 };
 
@@ -21,7 +22,7 @@ const getAllData = ()=> {
     .then((result) => {
         store.dispatch({type: 'FETCH_POSTS_SUCCESS', payload: result});
     }).catch((err) => {
-        console.log(err); // eslint-disable-line
+        store.dispatch({type: 'FETCH_POSTS_FAILED', payload: err});
     });
 
 };
@@ -51,7 +52,7 @@ const updateResource = (id,data)=> {
     .then((result) => {
         store.dispatch({type: 'FETCH_POSTS_SUCCESS', payload: result});
     }).catch((err) => {
-        console.log(err); // eslint-disable-line
+        store.dispatch({type: 'FETCH_POSTS_FAILED', payload: err});
     });
 
 };

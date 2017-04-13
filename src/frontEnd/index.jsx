@@ -1,4 +1,4 @@
-import React from 'react'; // eslint-disable-line
+import React from 'react';
 import ReactDom from 'react-dom';
 import Header from './components/header.jsx';
 import ResourceForm from './components/resourceForm.jsx';

@@ -1,13 +1,13 @@
 const resourcesReducer = (state = [], action) => {
     switch (action.type) {
     case 'FETCH_POSTS_REQUEST':
-        console.log('loading');// eslint-disable-line
+
         return state;
 
     case 'FETCH_POSTS_FAILED':
-        console.log('failed', action.payload);// eslint-disable-line no-console
+        // eslint-disable-next-line no-console
+        console.log(action.payload);
         return state;
-
 
     case 'FETCH_POSTS_SUCCESS':
         return action.payload;

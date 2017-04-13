@@ -7,4 +7,4 @@ const allReducers = combineReducers({
 });
 const store = createStore(allReducers);
 
-export {store};
+export default store;

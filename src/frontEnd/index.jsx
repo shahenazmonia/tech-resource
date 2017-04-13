@@ -3,7 +3,7 @@ import ReactDom from 'react-dom';
 import Header from './components/header.jsx';
 import ResourceForm from './components/resourceForm.jsx';
 import MyTable from './components/myTable.jsx';
-import {store} from './store.js';
+import store from './store.js';
 import styles from '../../public/css/styles.css';
 import {getAllData} from './actions.js';
 

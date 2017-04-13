@@ -26,28 +26,31 @@ const getAllData = ()=> {
     .then(res => res.json())
     .then((result) => {
         store.dispatch({type: 'FETCH_POSTS_SUCCESS', payload: result});
-    }).catch(() => {
+    }).catch((err) => {
+        console.log(err); // eslint-disable-line
     });
 
 };
 const deleteResource = (id)=> {
-    const url = '/delete/'+`${id}`;
+    const url = '/delete/'+id;
     fetch(url,{method:'DELETE'})
     .then(res => res.json())
     .then((result) => {
         store.dispatch({type: 'FETCH_POSTS_SUCCESS', payload: result});
-    }).catch(() => {
+    }).catch((err) => {
+        console.log(err); // eslint-disable-line
     });
 
 };
 
 const updateResource = (id,data)=> {
-    const url = '/update/'+`${id}`;
+    const url = '/update/'+id;
     fetch(url,{method:'POST',body:JSON.stringify(data)})
     .then(res => res.json())
     .then((result) => {
         store.dispatch({type: 'FETCH_POSTS_SUCCESS', payload: result});
-    }).catch(() => {
+    }).catch((err) => {
+        console.log(err); // eslint-disable-line
     });
 
 };

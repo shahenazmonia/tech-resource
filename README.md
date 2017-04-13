@@ -16,9 +16,11 @@ var db = new sqlite3.Database('YOUR_DATABASE_NAME');
 
 **To run this code**
 ```
-- git clone https://github.com/shahenazmonia/tech-resource.git
-- npm i
-- npm i nodemon -g
-- npm run watch
-- npm run server:watch
+$ git clone https://github.com/shahenazmonia/tech-resource.git
+$ npm i
+$ npm i nodemon -g
+$ npm run watch
+$ npm run server:watch
+
+Visit http://localhost:(whatever the port is)
 ```

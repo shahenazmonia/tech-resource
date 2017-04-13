@@ -17,4 +17,4 @@ const resourcesReducer = (state = [], action) => {
     }
 };
 
-export default resourcesReducer;
+export {resourcesReducer};

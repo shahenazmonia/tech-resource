@@ -1,5 +1,5 @@
 import {createStore,combineReducers} from 'redux';
-import resourcesReducer from './reducers.js';
+import {resourcesReducer} from './reducers.js';
 
 
 const allReducers = combineReducers({
@@ -7,4 +7,4 @@ const allReducers = combineReducers({
 });
 const store = createStore(allReducers);
 
-export default store;
+export {store};

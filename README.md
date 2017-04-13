@@ -12,8 +12,8 @@ We used **React**,**reduix** and **asynch reduix front-end** with **hapi server*
 **To run this code**
 ```
 $ npm i
-$ webpack
-$ node ./src/backEnd/index.js
+$ npm run build
+$ npm start
 
-Visit http://localhost: 3000
+Visit http://localhost:3000
 ```

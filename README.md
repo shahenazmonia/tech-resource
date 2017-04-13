@@ -13,8 +13,8 @@ We used **React**,**reduix** and **asynch reduix front-end** with **hapi server*
 ```
 $ git clone https://github.com/shahenazmonia/tech-resource.git
 $ npm i
-$ npm run watch
-$ npm run server:watch
+$ webpack
+$ node ./src/backEnd/index.js
 
 Visit http://localhost: 3000
 ```

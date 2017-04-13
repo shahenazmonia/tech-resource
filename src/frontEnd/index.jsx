@@ -4,9 +4,6 @@ import Header from './header.jsx'; // eslint-disable-line
 import ResourceForm from './resourceForm.jsx'; // eslint-disable-line
 import MyTable from './myTable.jsx'; // eslint-disable-line
 import store from './reduxes.js';
-import resourcesReducer from './reduxes.js';
-
-
 import styles from './css/styles.css';
 import {getAllData} from './actions.js';
 

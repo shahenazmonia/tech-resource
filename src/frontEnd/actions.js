@@ -51,5 +51,4 @@ const updateResource = (id,data)=> {
     });
 
 };
-
 export {insertResource,getAllData,deleteResource,updateResource};

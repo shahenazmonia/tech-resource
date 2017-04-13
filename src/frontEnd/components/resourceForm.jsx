@@ -1,5 +1,5 @@
 import React from 'react';
-import {insertResource } from './actions.js';
+import {insertResource } from '../actions.js';
 
 
 class ResourceForm extends React.Component {

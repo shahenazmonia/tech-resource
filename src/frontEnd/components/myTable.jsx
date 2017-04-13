@@ -1,7 +1,8 @@
-import React from 'react'; //eslint-disable-line
-import {deleteResource, updateResource} from './actions.js'; // eslint-disable-line
+import React from 'react';
+import types from 'prop-types';
+import {deleteResource, updateResource} from '../actions.js';
 
-class myTable extends React.Component {
+class MyTable extends React.Component {
 
     constructor(props) {
         super(props);
@@ -101,4 +102,8 @@ class myTable extends React.Component {
     }
 }
 
-export default myTable;
+MyTable.propTypes = {
+    resourceData:types.PropTypes.array
+};
+
+export default MyTable;

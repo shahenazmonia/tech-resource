@@ -1,17 +1,5 @@
-import store from './reduxes.js';
+import store from './store.js';
 
-
-const thunks = { // eslint-disable-line
-    success : (people) => {
-        return {type: 'FETCH_POSTS_SUCCESS', payload: people};
-    },
-    loading : () => {
-        return {type: 'FETCH_POSTS_REQUEST'};
-    },
-    failed : () => {
-        return {type: 'FETCH_POSTS_FAILED'};
-    }
-};
 const insertResource = (data) => {
     fetch('/insert',
         {method:'POST',
@@ -44,7 +32,8 @@ const deleteResource = (id)=> {
     .then((result) => {
         store.dispatch({type: 'FETCH_POSTS_SUCCESS', payload: result});
     }).catch((err) => {
-        console.log(err); // eslint-disable-line
+        store.dispatch({type: 'FETCH_POSTS_FAILED', payload: err});
+
     });
 
 };

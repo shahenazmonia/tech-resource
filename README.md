@@ -15,6 +15,7 @@ $ git clone https://github.com/shahenazmonia/tech-resource.git
 $ npm i
 $ npm run watch
 $ npm run server:watch
+$ npm run test:watch
 
 Visit http://localhost: 3000
 ```

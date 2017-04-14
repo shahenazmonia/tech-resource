@@ -17,4 +17,14 @@ const resourcesReducer = (state = [], action) => {
     }
 };
 
-export {resourcesReducer};
+const editReducer =(state = [{id:-1 , editable:false}] , action)=> {
+    switch (action.type) {
+    case 'UPDATE_TR':
+        return action.payload;
+    case 'FREEZE_TR':
+        return action.payload;
+    default:return state;
+    }
+};
+
+export {resourcesReducer,editReducer};

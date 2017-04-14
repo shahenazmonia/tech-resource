@@ -1,6 +1,6 @@
 import React from 'react';
 import types from 'prop-types';
-import {deleteResource, updateResource} from '../actions.js';
+import {deleteResource, updateResource, changeEditStatus} from '../actions.js';
 
 class MyTable extends React.Component {
 
@@ -9,8 +9,6 @@ class MyTable extends React.Component {
         this.state = {
             tech:'',
             url:'',
-            buttonStatus:'update',
-            inputDisabled:false,
             inputStyle:{
                 validStyle:{
                     bodrer : 'none',
@@ -29,9 +27,7 @@ class MyTable extends React.Component {
     handleUpdate(techValue,urlValue,cb){
         this.setState({
             tech: techValue.textContent ,
-            url: urlValue.textContent ,
-            buttonStatus:'update',
-            inputDisabled:false
+            url: urlValue.textContent
         });
         cb(techValue.textContent,urlValue.textContent);
     }
@@ -47,13 +43,18 @@ class MyTable extends React.Component {
         const data = this.props.resourceData.map((elem) => {
             let techValue  ;
             let urlValue  ;
-
             return (
 
-                <tr key={elem.id} >
-                    <td contentEditable="false" >{elem.id}</td>
-                    <td contentEditable={this.state.inputDisabled} ref={(input) => { techValue = input; }}>{elem.tech}</td>
-                    <td contentEditable={this.state.inputDisabled} ref={(input) => { urlValue = input; }}>{elem.url}</td>
+                <tr id={elem.id} key={elem.id} >
+                    <td contentEditable='false' >{elem.id}</td>
+                    <td  contentEditable={
+                        (this.props.trStatus[0].editable==false)?false
+                        :(this.props.trStatus[0].id==elem.id)?true:false
+                      } ref={(input) => { techValue = input; }}>{elem.tech}</td>
+                    <td  contentEditable={
+                        (this.props.trStatus[0].editable==false)?false
+                        :(this.props.trStatus[0].id==elem.id)?true:false
+                      }ref={(input) => { urlValue = input; }}>{elem.url}</td>
                     <td>
                           <button type='button' className='close' onClick={() => {
                               deleteResource(elem.id);
@@ -63,18 +64,17 @@ class MyTable extends React.Component {
                     </td>
                     <td>
                         <button type='button' onClick={() => {
-                            if(this.state.inputDisabled){
+                            if(this.props.trStatus[0].editable){
                                 this.handleUpdate(techValue,urlValue,(tech,url)=>{
                                     updateResource(elem.id  ,{tech:tech,url:url} );
+                                    changeEditStatus([{id:-1, editable:false }]);
                                 });
                             }else{
-                                this.setState({
-                                    buttonStatus:'save',
-                                    inputDisabled:true
-                                });
+
+                                changeEditStatus([{id:elem.id , editable:true}]);
                             }
                         }}>
-                            <span>{this.state.buttonStatus}</span>
+                            <span>{(this.props.trStatus[0].id==elem.id)?'save':'update'}</span>
                         </button>
                     </td>
                 </tr>
@@ -102,6 +102,9 @@ class MyTable extends React.Component {
 
 MyTable.propTypes = {
     resourceData:types.PropTypes.array
+};
+MyTable.propTypes = {
+    trStatus:types.PropTypes.array
 };
 
 export default MyTable;

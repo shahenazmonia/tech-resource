@@ -1,9 +1,10 @@
 import {createStore,combineReducers} from 'redux';
-import {resourcesReducer} from './reducers.js';
+import {resourcesReducer,editReducer} from './reducers.js';
 
 
 const allReducers = combineReducers({
-    resources: resourcesReducer
+    resources: resourcesReducer,
+    trStatus: editReducer
 });
 const store = createStore(allReducers);
 

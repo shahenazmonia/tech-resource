@@ -47,14 +47,10 @@ class MyTable extends React.Component {
 
                 <tr id={elem.id} key={elem.id} >
                     <td contentEditable='false' >{elem.id}</td>
-                    <td  contentEditable={
-                        (this.props.trStatus===null)?false
-                        :(this.props.trStatus==elem.id)?true:false
-                      } ref={(input) => { techValue = input; }}>{elem.tech}</td>
-                    <td  contentEditable={
-                        (this.props.trStatus===null)?false
-                        :(this.props.trStatus==elem.id)?true:false
-                      }ref={(input) => { urlValue = input; }}>{elem.url}</td>
+                    <td  contentEditable={ this.props.trStatus === elem.id}
+                         ref={(input) => { techValue = input; }}>{elem.tech}</td>
+                    <td  contentEditable={ this.props.trStatus === elem.id}
+                         ref={(input) => { urlValue = input; }}>{elem.url}</td>
                     <td>
                           <button type='button' className='close' onClick={() => {
                               deleteResource(elem.id);

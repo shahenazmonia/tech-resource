@@ -40,7 +40,7 @@ test('FREEZE_TR should change state to null', () => {
     const expectedAction = {
         type: 'FREEZE_TR'
     };
-    editReducer(null, Object.assign({}, expectedAction));
-    expect(editReducer(null, expectedAction)).toEqual(null);
+    editReducer(id, Object.assign({}, expectedAction));
+    expect(editReducer(id, expectedAction)).toEqual(null);
 
 });

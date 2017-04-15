@@ -4,7 +4,7 @@
   "description": "",
   "main": "center.js",
   "scripts": {
-    "lint": "eslint .",
+    "lint": "eslint --ext .jsx --ext .js .",
     "test": "jest",
     "test:watch": "jest --watch",
     "start": "node ./src/backEnd/index.js",

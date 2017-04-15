@@ -1,6 +1,6 @@
 import React from 'react';
 import types from 'prop-types';
-import {deleteResource, updateResource, changeEditStatus} from '../actions.js';
+import {deleteResource, updateResource, updateRow,freezeRow} from '../actions.js';
 
 class MyTable extends React.Component {
 
@@ -48,12 +48,12 @@ class MyTable extends React.Component {
                 <tr id={elem.id} key={elem.id} >
                     <td contentEditable='false' >{elem.id}</td>
                     <td  contentEditable={
-                        (this.props.trStatus[0].editable==false)?false
-                        :(this.props.trStatus[0].id==elem.id)?true:false
+                        (this.props.trStatus===null)?false
+                        :(this.props.trStatus==elem.id)?true:false
                       } ref={(input) => { techValue = input; }}>{elem.tech}</td>
                     <td  contentEditable={
-                        (this.props.trStatus[0].editable==false)?false
-                        :(this.props.trStatus[0].id==elem.id)?true:false
+                        (this.props.trStatus===null)?false
+                        :(this.props.trStatus==elem.id)?true:false
                       }ref={(input) => { urlValue = input; }}>{elem.url}</td>
                     <td>
                           <button type='button' className='close' onClick={() => {
@@ -64,17 +64,16 @@ class MyTable extends React.Component {
                     </td>
                     <td>
                         <button type='button' onClick={() => {
-                            if(this.props.trStatus[0].editable){
+                            if(this.props.trStatus!==null){
                                 this.handleUpdate(techValue,urlValue,(tech,url)=>{
                                     updateResource(elem.id  ,{tech:tech,url:url} );
-                                    changeEditStatus([{id:-1, editable:false }]);
+                                    freezeRow();
                                 });
                             }else{
-
-                                changeEditStatus([{id:elem.id , editable:true}]);
+                                updateRow(elem.id);
                             }
                         }}>
-                            <span>{(this.props.trStatus[0].id==elem.id)?'save':'update'}</span>
+                            <span>{(this.props.trStatus==elem.id)?'save':'update'}</span>
                         </button>
                     </td>
                 </tr>
@@ -101,9 +100,7 @@ class MyTable extends React.Component {
 }
 
 MyTable.propTypes = {
-    resourceData:types.PropTypes.array
-};
-MyTable.propTypes = {
+    resourceData:types.PropTypes.array,
     trStatus:types.PropTypes.array
 };
 

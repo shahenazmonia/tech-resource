@@ -1,9 +1,12 @@
 import store from './store.js';
 
-const changeEditStatus=(data) => {
-  console.log(data);
+const updateRow=(data) => {
     store.dispatch({type:'UPDATE_TR',payload:data});
 };
+const freezeRow =() => {
+    store.dispatch({type:'FREEZE_TR'});
+};
+
 const insertResource = (data) => {
     fetch('/insert',
         {method:'POST',
@@ -59,4 +62,4 @@ const updateResource = (id,data)=> {
     });
 
 };
-export {insertResource,getAllData,deleteResource,updateResource,changeEditStatus};
+export {insertResource,getAllData,deleteResource,updateResource,updateRow,freezeRow};

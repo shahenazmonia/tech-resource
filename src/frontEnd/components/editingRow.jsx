@@ -8,7 +8,6 @@ class EditingRow extends React.Component {
         super(props);
     }
     handleUpdate(techValue, urlValue, cb) {
-        this.setState({tech: techValue.textContent, url: urlValue.textContent});
         freezeRow();
         cb(techValue.textContent, urlValue.textContent);
     }

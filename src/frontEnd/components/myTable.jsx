@@ -7,29 +7,8 @@ class MyTable extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            tech: '',
-            url: '',
-            inputStyle: {
-                validStyle: {
-                    bodrer: 'none',
-                    backgroundColor: 'GRAY',
-                    width: '100%'
-                },
-                invalidStyle: {
-                    backgroundColor: 'white',
-                    width: '100%'
-                }
-            }
-        };
     }
     render() {
-
-        // const inputStyle = (this.state.inputDisabled)
-        //         ? this.state.inputStyle.invalidStyle
-        //         : this.state.inputStyle.validStyle;
-        //
-
         const data = this.props.resourceData.map((elem) => {
             if (this.props.trStatus === elem.id) {
                 return(<EditingRow resource={elem} key={elem.id}/>);

@@ -15,16 +15,15 @@ test('FETCH_POSTS_SUCCESS should fetch resources', () => {
         payload: resources
     };
     expect(resourcesReducer([], expectedAction)).toEqual(resources);
-
 });
 
-test('FETCH_POSTS_SUCCESS should failed resources', () => {
+test('FETCH_POSTS_FAILED should return empty resources after FETCH_POSTS_SUCCESS operation', () => {
     const expectedAction = {
         type: 'FETCH_POSTS_FAILED',
         payload: resources
     };
-    resourcesReducer([], Object.assign({}, expectedAction, {type: 'FETCH_POSTS_SUCCESS'}));
-    expect(resourcesReducer([], [])).toEqual([]);
+    resourcesReducer([],{type: 'FETCH_POSTS_SUCCESS',payload:resources});
+    expect(resourcesReducer([], expectedAction)).toEqual([]);
 
 });
 test('UPDATE_TR should change state to id', () => {
@@ -32,15 +31,14 @@ test('UPDATE_TR should change state to id', () => {
         type: 'UPDATE_TR',
         payload: id
     };
-    editReducer(id, Object.assign({}, expectedAction));
-    expect(editReducer([], expectedAction)).toEqual(id);
+    expect(editReducer(null, expectedAction)).toEqual(id);
 
 });
-test('FREEZE_TR should change state to null', () => {
+test('FREEZE_TR should change state to null after UPDATE_TR operation', () => {
     const expectedAction = {
         type: 'FREEZE_TR'
     };
-    editReducer(id, Object.assign({}, expectedAction));
+    editReducer(null, {type: 'UPDATE_TR',payload:id});
     expect(editReducer(id, expectedAction)).toEqual(null);
 
 });

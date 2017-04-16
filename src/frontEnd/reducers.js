@@ -17,12 +17,12 @@ const resourcesReducer = (state = [], action) => {
     }
 };
 
-const editReducer =(state = null , action)=> {
+const editReducer =(state = {id:-1} , action)=> {
     switch (action.type) {
     case 'UPDATE_TR':
         return action.payload;
     case 'FREEZE_TR':
-        return null;
+        return {id:-1};
     default:return state;
     }
 };

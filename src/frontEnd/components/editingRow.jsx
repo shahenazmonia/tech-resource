@@ -1,27 +1,23 @@
 import React from 'react';
 import types from 'prop-types';
+
+import TdInput from './tdInput.jsx';
 import {deleteResource, updateResource, freezeRow} from '../actions.js';
 
 class EditingRow extends React.Component {
     constructor(props) {
         super(props);
     }
-    handleUpdate(techValue, urlValue, cb) {
+    handleUpdate(tr, cb) {
         freezeRow();
-        cb(techValue.textContent, urlValue.textContent);
+        cb(tr.tech, tr.url);
     }
     render() {
-        let techValue;
-        let urlValue;
         return (
             <tr id={this.props.resource.id} key={this.props.resource.id}>
-                <td contentEditable='false'>{this.props.resource.id}</td>
-                <td contentEditable={true} ref={(input) => {
-                    techValue = input;
-                }}>{this.props.resource.tech}</td>
-              <td contentEditable={true} ref={(input) => {
-                  urlValue = input;
-              }}>{this.props.resource.url}</td>
+                <td >{this.props.resource.id}</td>
+                <td ><TdInput resource={this.props.resource}type={'tech'}/></td>
+                <td ><TdInput resource={this.props.resource}type={'url'}/></td>
                 <td>
                     <button type='button' className='close' onClick={() => {
                         deleteResource(this.props.resource.id);
@@ -31,7 +27,7 @@ class EditingRow extends React.Component {
                 </td>
                 <td>
                     <button type='button' onClick={() => {
-                        this.handleUpdate(techValue, urlValue, (tech, url) => {
+                        this.handleUpdate(this.props.trStatus, (tech, url) => {
                             updateResource(this.props.resource.id, {
                                 tech: tech,
                                 url: url
@@ -46,6 +42,7 @@ class EditingRow extends React.Component {
     }
 }
 EditingRow.propTypes = {
-    resource: types.PropTypes.object
+    resource: types.PropTypes.object,
+    trStatus: types.PropTypes.object
 };
 export default EditingRow;

@@ -46,7 +46,6 @@ const deleteResource = (id)=> {
 };
 
 const updateResource = (id,data)=> {
-
     const url = '/update/'+id;
     fetch(url,{method:'POST',
         body:JSON.stringify(data),

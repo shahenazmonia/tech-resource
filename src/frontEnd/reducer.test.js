@@ -22,7 +22,6 @@ test('FETCH_POSTS_FAILED should return empty resources after FETCH_POSTS_SUCCESS
         type: 'FETCH_POSTS_FAILED',
         payload: resources
     };
-    resourcesReducer([],{type: 'FETCH_POSTS_SUCCESS',payload:resources});
     expect(resourcesReducer([], expectedAction)).toEqual([]);
 
 });
@@ -38,7 +37,6 @@ test('FREEZE_TR should change state to null after UPDATE_TR operation', () => {
     const expectedAction = {
         type: 'FREEZE_TR'
     };
-    editReducer(null, {type: 'UPDATE_TR',payload:id});
     expect(editReducer(id, expectedAction)).toEqual(null);
 
 });

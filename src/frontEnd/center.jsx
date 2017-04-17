@@ -1,7 +1,4 @@
-import React from 'react'
-import Header from './header.jsx'
-import ResourceForm from './resourceForm.jsx'
-import MyTable from './myTable.jsx'
+import React from 'react';
 class Center extends React.Component {
 
     constructor(props) {

@@ -3,9 +3,6 @@ import store from './store.js';
 const updateRow=(data) => {
     store.dispatch({type:'UPDATE_TR',payload:data});
 };
-const freezeRow =() => {
-    store.dispatch({type:'FREEZE_TR'});
-};
 
 const insertResource = (data) => {
     fetch('/insert',
@@ -31,7 +28,6 @@ const getAllData = ()=> {
     }).catch((err) => {
         store.dispatch({type: 'FETCH_POSTS_FAILED', payload: err});
     });
-
 };
 const deleteResource = (id)=> {
     const url = '/delete/'+id;
@@ -47,7 +43,6 @@ const deleteResource = (id)=> {
 };
 
 const updateResource = (id,data)=> {
-
     const url = '/update/'+id;
     fetch(url,{method:'POST',
         body:JSON.stringify(data),
@@ -58,9 +53,9 @@ const updateResource = (id,data)=> {
     .then(res => res.json())
     .then((result) => {
         store.dispatch({type: 'FETCH_POSTS_SUCCESS', payload: result});
+        store.dispatch({type:'FREEZE_TR'});
     }).catch((err) => {
         store.dispatch({type: 'FETCH_POSTS_FAILED', payload: err});
     });
-
 };
-export {insertResource,getAllData,deleteResource,updateResource,updateRow,freezeRow};
+export {insertResource,getAllData,deleteResource,updateResource,updateRow};

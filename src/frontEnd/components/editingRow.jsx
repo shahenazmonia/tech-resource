@@ -1,27 +1,34 @@
 import React from 'react';
 import types from 'prop-types';
-import {deleteResource, updateResource, freezeRow} from '../actions.js';
+import {deleteResource, updateResource} from '../actions.js';
 
 class EditingRow extends React.Component {
     constructor(props) {
         super(props);
+        this.state ={
+            tech:this.props.resource.tech,
+            url:this.props.resource.url
+        };
+        this.onTechChange = this.onTechChange.bind(this);
+        this.onURLChange = this.onURLChange.bind(this);
     }
-    handleUpdate(techValue, urlValue, cb) {
-        freezeRow();
-        cb(techValue.textContent, urlValue.textContent);
+
+    onTechChange(ev){
+        this.setState({
+            tech:ev.target.value
+        });
+    }
+    onURLChange(ev){
+        this.setState({
+            url:ev.target.value
+        });
     }
     render() {
-        let techValue;
-        let urlValue;
         return (
-            <tr id={this.props.resource.id} key={this.props.resource.id}>
-                <td contentEditable='false'>{this.props.resource.id}</td>
-                <td contentEditable={true} ref={(input) => {
-                    techValue = input;
-                }}>{this.props.resource.tech}</td>
-              <td contentEditable={true} ref={(input) => {
-                  urlValue = input;
-              }}>{this.props.resource.url}</td>
+            <tr key={this.props.resource.id}>
+                <td >{this.props.resource.id}</td>
+                <td ><input value={this.state.tech} onChange={this.onTechChange}></input></td>
+                <td ><input value={this.state.url} onChange={this.onURLChange}></input></td>
                 <td>
                     <button type='button' className='close' onClick={() => {
                         deleteResource(this.props.resource.id);
@@ -31,12 +38,7 @@ class EditingRow extends React.Component {
                 </td>
                 <td>
                     <button type='button' onClick={() => {
-                        this.handleUpdate(techValue, urlValue, (tech, url) => {
-                            updateResource(this.props.resource.id, {
-                                tech: tech,
-                                url: url
-                            });
-                        });
+                        updateResource(this.props.resource.id,this.state);
                     }}>
                         <span>save</span>
                     </button>

@@ -1,6 +1,5 @@
 import React from 'react';
 import types from 'prop-types';
-import {deleteResource, updateResource} from '../actions.js';
 
 class EditingRow extends React.Component {
     constructor(props) {
@@ -30,17 +29,14 @@ class EditingRow extends React.Component {
                 <td ><input value={this.state.tech} onChange={this.onTechChange}></input></td>
                 <td ><input value={this.state.url} onChange={this.onURLChange}></input></td>
                 <td>
-                    <button type='button' className='close' onClick={() => {
-                        deleteResource(this.props.resource.id);
-                    }}>
-                        <span>DELETE</span>
+                    <button type='button' className='close' onClick={() =>this.props.onUpdate(this.props.resource.id,{tech: this.props.resource.tech, url: this.props.resource.url})
+                    }>
+                        <span>CANCEL</span>
                     </button>
                 </td>
                 <td>
-                    <button type='button' onClick={() => {
-                        updateResource(this.props.resource.id,this.state);
-                    }}>
-                        <span>save</span>
+                    <button type='button' onClick={() =>this.props.onUpdate(this.props.resource.id,this.state)}>
+                        <span>SAVE</span>
                     </button>
                 </td>
             </tr>
@@ -48,6 +44,7 @@ class EditingRow extends React.Component {
     }
 }
 EditingRow.propTypes = {
-    resource: types.PropTypes.object
+    resource: types.PropTypes.object,
+    onUpdate: types.props.func
 };
 export default EditingRow;

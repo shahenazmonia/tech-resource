@@ -1,6 +1,5 @@
 import React from 'react';
-import {insertResource } from '../actions.js';
-
+import types from 'prop-types';
 
 class ResourceForm extends React.Component {
     constructor(props) {
@@ -42,13 +41,15 @@ class ResourceForm extends React.Component {
                 <button style={buttonStyle} onClick={() => {
                     (this.state.title === '' || this.state.url === '')
                         ? alert('Please fill inputs!')
-                        : insertResource({
-                            title :this.state.title,
-                            url:this.state.url});this.setState({title: '', url: ''});
-                }}>add</button>
+                        : this.props.onAdd(this.state);
+
+                }} >add</button>
             </div>
         );
     }
 }
 
+ResourceForm.propTypes = {
+    onAdd: types.PropTypes.func
+};
 export default ResourceForm;

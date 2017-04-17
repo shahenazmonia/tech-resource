@@ -8,7 +8,7 @@ const server = new Hapi.Server();
 server.connection({
     port: 3000
 });
-db.createTable((err, res)=>{ // eslint-disable-line
+db.createTable((err)=>{
     if (err) {
         throw err;
     }
@@ -31,5 +31,6 @@ server.start((err) => {
     if (err) {
         throw err;
     }
-    console.log(`Server running : ${server.info.uri}`);// eslint-disable-line
+    // eslint-disable-next-line no-console
+    console.log(`Server running : ${server.info.uri}`);
 });

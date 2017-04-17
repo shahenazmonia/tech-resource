@@ -1,10 +1,10 @@
-// eslint-disable
+
 module.exports = {
     entry: {
         bundle: ['./src/frontEnd/index.jsx']
     },
     output: {
-        path: __dirname + '/public/js',// eslint-disable-line
+        path: __dirname + '/public/js',
         filename: '[name].js',
         publicPath: 'public'
     },

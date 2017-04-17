@@ -1,17 +1,12 @@
-import store from './reduxes.js';
+import store from './store.js';
 
-
-const thunks = { // eslint-disable-line
-    success : (people) => {
-        return {type: 'FETCH_POSTS_SUCCESS', payload: people};
-    },
-    loading : () => {
-        return {type: 'FETCH_POSTS_REQUEST'};
-    },
-    failed : () => {
-        return {type: 'FETCH_POSTS_FAILED'};
-    }
+const updateRow=(data) => {
+    store.dispatch({type:'UPDATE_TR',payload:data});
 };
+const freezeRow =() => {
+    store.dispatch({type:'FREEZE_TR'});
+};
+
 const insertResource = (data) => {
     fetch('/insert',
         {method:'POST',
@@ -23,7 +18,8 @@ const insertResource = (data) => {
     .then(res => res.json())
     .then((result) => {
         store.dispatch({type: 'FETCH_POSTS_SUCCESS', payload: result});
-    }).catch(() => {
+    }).catch((err) => {
+        store.dispatch({type: 'FETCH_POSTS_FAILED', payload: err});
     });
 };
 
@@ -33,7 +29,7 @@ const getAllData = ()=> {
     .then((result) => {
         store.dispatch({type: 'FETCH_POSTS_SUCCESS', payload: result});
     }).catch((err) => {
-        console.log(err); // eslint-disable-line
+        store.dispatch({type: 'FETCH_POSTS_FAILED', payload: err});
     });
 
 };
@@ -44,7 +40,8 @@ const deleteResource = (id)=> {
     .then((result) => {
         store.dispatch({type: 'FETCH_POSTS_SUCCESS', payload: result});
     }).catch((err) => {
-        console.log(err); // eslint-disable-line
+        store.dispatch({type: 'FETCH_POSTS_FAILED', payload: err});
+
     });
 
 };
@@ -62,8 +59,8 @@ const updateResource = (id,data)=> {
     .then((result) => {
         store.dispatch({type: 'FETCH_POSTS_SUCCESS', payload: result});
     }).catch((err) => {
-        console.log(err); // eslint-disable-line
+        store.dispatch({type: 'FETCH_POSTS_FAILED', payload: err});
     });
 
 };
-export {insertResource,getAllData,deleteResource,updateResource};
+export {insertResource,getAllData,deleteResource,updateResource,updateRow,freezeRow};

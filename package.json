@@ -4,12 +4,13 @@
   "description": "",
   "main": "center.js",
   "scripts": {
-    "lint": "eslint .",
+    "lint": "eslint --ext .jsx --ext .js .",
     "test": "jest",
     "test:watch": "jest --watch",
     "start": "node ./src/backEnd/index.js",
-    "watch": "webpack --watch",
-    "server:watch": "nodemon -x 'npm start'"
+    "watch:client": "webpack --watch",
+    "watch:server": "nodemon -x 'npm start'",
+    "build": "webpack"
   },
   "pre-commit": [
     "lint"
@@ -36,6 +37,7 @@
     "jest": "^19.0.2",
     "nodemon": "^1.11.0",
     "pre-commit": "^1.2.2",
+    "prop-types": "^15.5.8",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "redux-devtools": "^3.3.2",

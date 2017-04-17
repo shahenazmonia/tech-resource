@@ -1,5 +1,5 @@
 import React from 'react';
-import {insertResource } from './actions.js';
+import {insertResource } from '../actions.js';
 
 
 class ResourceForm extends React.Component {
@@ -40,7 +40,6 @@ class ResourceForm extends React.Component {
                 <label>url</label>
                 <input value={this.state.url} onChange={this.changeUrl}></input><br/>
                 <button style={buttonStyle} onClick={() => {
-                    //eslint-disable-line
                     (this.state.title === '' || this.state.url === '')
                         ? alert('Please fill inputs!')
                         : insertResource({

@@ -57,7 +57,7 @@ MyTable.propTypes = {
     onRemove: types.PropTypes.func,
     updateRow:types.PropTypes.func,
     onUpdate: types.PropTypes.func,
-    resourceData: types.PropTypes.func,
+    resourceData: types.PropTypes.array,
     editRowStatus: types.PropTypes.func
 
 };

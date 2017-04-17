@@ -45,6 +45,6 @@ class EditingRow extends React.Component {
 }
 EditingRow.propTypes = {
     resource: types.PropTypes.object,
-    onUpdate: types.props.func
+    onUpdate: types.PropTypes.func
 };
 export default EditingRow;

@@ -4,7 +4,7 @@ import {resourcesReducer,editReducer} from './reducers.js';
 
 const allReducers = combineReducers({
     resources: resourcesReducer,
-    trStatus: editReducer
+    editRowStatus: editReducer
 });
 const store = createStore(allReducers);
 

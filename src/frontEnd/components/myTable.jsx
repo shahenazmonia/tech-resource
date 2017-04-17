@@ -10,7 +10,7 @@ class MyTable extends React.Component {
     }
     render() {
         const data = this.props.resourceData.map((elem) => {
-            if (this.props.trStatus === elem.id) {
+            if (this.props.editRowStatus === elem.id) {
                 return(<EditingRow resource={elem} key={elem.id}/>);
             }
             else {
@@ -30,7 +30,7 @@ class MyTable extends React.Component {
                             <button type='button' onClick={()=>{
                                 updateRow(elem.id);
                             }}>
-                                <span>{'update'}</span>
+                                <span>update</span>
                             </button>
                         </td>
                     </tr>
@@ -59,7 +59,7 @@ class MyTable extends React.Component {
 }
 MyTable.propTypes = {
     resourceData: types.PropTypes.array,
-    trStatus: types.PropTypes.number
+    editRowStatus: types.PropTypes.number
 };
 
 export default MyTable;

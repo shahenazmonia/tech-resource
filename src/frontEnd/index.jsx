@@ -11,7 +11,7 @@ const render = () => ReactDom.render(
     <div className={styles}>
     <Header/>
     <ResourceForm />
-    <MyTable resourceData={store.getState().resources} trStatus ={store.getState().trStatus}/>
+    <MyTable resourceData={store.getState().resources} editRowStatus ={store.getState().editRowStatus}/>
 </div>, document.getElementById('myApp'));
 getAllData();
 render();
